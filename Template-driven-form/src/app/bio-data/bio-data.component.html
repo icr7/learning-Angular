@@ -1,0 +1,64 @@
+<h2>Sign in using template driven forms</h2><br>
+<hr>
+<div class="container">
+    <form #signInForm="ngForm" (ngSubmit)="loginUser(signInForm)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" #emailAddressField="ngModel" class="form-control" id="exampleInputEmail1" name="emailAddressField" #email="ngModel"
+                ngModel required>
+            <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            <div *ngIf="emailAddressField.touched && !emailAddressField.valid" class="alert alert-danger">
+                please fill email 
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" #passwordField="ngModel" class="form-control" id="exampleInputPassword1" name="passwordField" ngModel
+                required>
+                <div *ngIf="passwordField.touched && !passwordField.valid" class="alert alert-danger">
+                    please fill password 
+                </div>
+        </div>
+
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" value="male" id="gender1" name="genderField" ngModel required>
+            <label class="form-check-label" for="gender1">Male</label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" class="form-check-input" value="female" id="gender2" name="genderField" ngModel
+                required>
+            <label class="form-check-label" for="gender2">Female</label>
+        </div>
+
+        <div class="mb-3"><br>
+            <label for="FavLang" class="form-label">Favourite language</label>
+            <select class="form-select" aria-label="Default select example" id="FavLang" name="FavLangField" ngModel
+                required>
+                <option selected>Open this select menu</option>
+                <option value="1">Java</option>
+                <option value="2">Angular</option>
+                <option value="3">Python</option>
+                <option value="4">c++</option>
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="comment" class="form-label">comment</label>
+            <textarea class="form-control" id="comment" name="commentField" ngModel required>
+            </textarea>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel #termsField="ngModel">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" [disabled]="!termsField.value">Submit</button>
+        
+    </form>
+</div>
